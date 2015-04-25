@@ -7,6 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        MagicalRecord.setupCoreDataStackWithStoreNamed("as-buttons.sqlite3")
         window!.backgroundColor = UIColor.whiteColor()
         window!.makeKeyAndVisible()
         let navigationController = UINavigationController(rootViewController: MainViewController())
@@ -28,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
+        MagicalRecord.cleanUp()
     }
 }
 

@@ -12,6 +12,11 @@
 		8038AF761AEBC3BD00389913 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8038AF751AEBC3BD00389913 /* Images.xcassets */; };
 		8038AF791AEBC3BD00389913 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8038AF771AEBC3BD00389913 /* LaunchScreen.xib */; };
 		8038AF851AEBC3BD00389913 /* ASButtonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF841AEBC3BD00389913 /* ASButtonsTests.swift */; };
+		8038AF8F1AEBD56800389913 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF8E1AEBD56800389913 /* EditViewController.swift */; };
+		8038AF911AEBEA9F00389913 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF901AEBEA9F00389913 /* EditViewModel.swift */; };
+		8038AF981AEBEBC300389913 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF961AEBEBC300389913 /* Models.xcdatamodeld */; };
+		8038AF9A1AEBEC3200389913 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF991AEBEC3200389913 /* Button.swift */; };
+		8038AF9F1AEBF06200389913 /* ButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF9E1AEBF06200389913 /* ButtonsViewModel.swift */; };
 		87FF09CABB8D35B27A4F75CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD388D10E1A0ED2116F6EFA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +42,12 @@
 		8038AF7E1AEBC3BD00389913 /* ASButtonsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ASButtonsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8038AF831AEBC3BD00389913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8038AF841AEBC3BD00389913 /* ASButtonsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASButtonsTests.swift; sourceTree = "<group>"; };
+		8038AF8E1AEBD56800389913 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		8038AF901AEBEA9F00389913 /* EditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		8038AF971AEBEBC300389913 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
+		8038AF991AEBEC3200389913 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Models/Button.swift; sourceTree = "<group>"; };
+		8038AF9B1AEBEC5200389913 /* ASButtons-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ASButtons-Bridging-Header.h"; sourceTree = "<group>"; };
+		8038AF9E1AEBF06200389913 /* ButtonsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsViewModel.swift; sourceTree = "<group>"; };
 		ECD388D10E1A0ED2116F6EFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -82,11 +93,16 @@
 		8038AF6B1AEBC3BD00389913 /* ASButtons */ = {
 			isa = PBXGroup;
 			children = (
+				8038AF921AEBEB3700389913 /* Models */,
 				8038AF6E1AEBC3BD00389913 /* AppDelegate.swift */,
 				8038AF701AEBC3BD00389913 /* MainViewController.swift */,
+				8038AF9E1AEBF06200389913 /* ButtonsViewModel.swift */,
+				8038AF8E1AEBD56800389913 /* EditViewController.swift */,
+				8038AF901AEBEA9F00389913 /* EditViewModel.swift */,
 				8038AF751AEBC3BD00389913 /* Images.xcassets */,
 				8038AF771AEBC3BD00389913 /* LaunchScreen.xib */,
 				8038AF6C1AEBC3BD00389913 /* Supporting Files */,
+				8038AF9B1AEBEC5200389913 /* ASButtons-Bridging-Header.h */,
 			);
 			path = ASButtons;
 			sourceTree = "<group>";
@@ -114,6 +130,15 @@
 				8038AF831AEBC3BD00389913 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8038AF921AEBEB3700389913 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8038AF961AEBEBC300389913 /* Models.xcdatamodeld */,
+				8038AF991AEBEC3200389913 /* Button.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		92CF8977C8C1ECE447A8CF42 /* Frameworks */ = {
@@ -267,8 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8038AF911AEBEA9F00389913 /* EditViewModel.swift in Sources */,
+				8038AF9A1AEBEC3200389913 /* Button.swift in Sources */,
+				8038AF9F1AEBF06200389913 /* ButtonsViewModel.swift in Sources */,
 				8038AF711AEBC3BD00389913 /* MainViewController.swift in Sources */,
 				8038AF6F1AEBC3BD00389913 /* AppDelegate.swift in Sources */,
+				8038AF981AEBEBC300389913 /* Models.xcdatamodeld in Sources */,
+				8038AF8F1AEBD56800389913 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,9 +418,12 @@
 			baseConfigurationReference = 480FF5E76B0CF32792668BF7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ASButtons/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ASButtons/ASButtons-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -399,9 +432,11 @@
 			baseConfigurationReference = 47E5AEE04862AE44A61EA25A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ASButtons/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ASButtons/ASButtons-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -470,6 +505,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8038AF961AEBEBC300389913 /* Models.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8038AF971AEBEBC300389913 /* Models.xcdatamodel */,
+			);
+			currentVersion = 8038AF971AEBEBC300389913 /* Models.xcdatamodel */;
+			name = Models.xcdatamodeld;
+			path = Models/Models.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8038AF611AEBC3BD00389913 /* Project object */;
 }
