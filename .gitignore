@@ -1,0 +1,12 @@
+project.xcworkspace
+xcuserdata
+*xcworkspace/
+Pods/
+preference.plist
+*.ipa
+*.app.dSYM.zip
+certs/
+preference.plist
+mint.plist
+build/
+tmp/
