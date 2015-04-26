@@ -10,4 +10,8 @@ class Button: NSManagedObject {
     class func save() {
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
+
+    class func rollback() {
+        NSManagedObjectContext.MR_defaultContext().rollback()
+    }
 }

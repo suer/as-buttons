@@ -7,12 +7,12 @@ class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
-        buttonsViewModel.fetch()
         loadBarButtons()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        buttonsViewModel.fetch()
         tableView.reloadData()
     }
 
@@ -35,6 +35,13 @@ class MainViewController: UITableViewController {
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: "Cell")
         cell.textLabel?.text = buttonsViewModel.buttons[indexPath.row].message
         return cell
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let editViewModel = EditViewModel(button: buttonsViewModel.buttons[indexPath.row])
+        let controller = EditViewController(editViewModel: editViewModel)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

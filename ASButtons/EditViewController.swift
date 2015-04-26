@@ -24,9 +24,11 @@ class EditViewController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         loadTextField()
         loadSaveButton()
+        loadCancelButton()
     }
 
     private func loadTextField() {
+        textField.text = editViewModel.message
         textField.placeholder = "Message"
         view.addSubview(textField)
         textField.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -45,12 +47,23 @@ class EditViewController: UIViewController {
         editViewModel.message = textField.text
     }
 
+    // MARK: save button
     private func loadSaveButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: Selector("saveButtonTapped"))
     }
 
     func saveButtonTapped() {
         editViewModel.save()
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
+    }
+
+    // MARK: cancel button
+    func loadCancelButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: Selector("cancelButtonTapped"))
+    }
+
+    func cancelButtonTapped() {
+        editViewModel.rollback()
+        navigationController?.popViewControllerAnimated(true)
     }
 }
