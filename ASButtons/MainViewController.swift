@@ -43,5 +43,13 @@ class MainViewController: UITableViewController {
         let controller = EditViewController(editViewModel: editViewModel)
         navigationController?.pushViewController(controller, animated: true)
     }
+
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            buttonsViewModel.remove(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+
 }
 

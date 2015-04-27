@@ -14,4 +14,9 @@ class Button: NSManagedObject {
     class func rollback() {
         NSManagedObjectContext.MR_defaultContext().rollback()
     }
+
+    func delete() {
+        self.MR_deleteEntity()
+        Button.save()
+    }
 }
