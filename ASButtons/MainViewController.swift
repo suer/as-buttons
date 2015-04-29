@@ -8,7 +8,9 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
         navigationController?.toolbarHidden = false
+        self.addObserver(self, forKeyPath: "editing", options: .New, context: nil)
         loadToolBarButtons()
+        loadEditButton()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -28,6 +30,25 @@ class MainViewController: UITableViewController {
     func addButtonTapped() {
         let controller = EditViewController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+
+    // MARK: edit button
+
+    private func loadEditButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: Selector("editButtonTapped"))
+    }
+
+    func editButtonTapped() {
+        editing = !editing
+    }
+
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        switch keyPath {
+        case "editing":
+            navigationItem.rightBarButtonItem?.title = editing ? "Finish" : "Edit"
+        default:
+            break
+        }
     }
 
     // MARK: table view
