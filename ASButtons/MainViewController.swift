@@ -7,7 +7,8 @@ class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
-        loadBarButtons()
+        navigationController?.toolbarHidden = false
+        loadToolBarButtons()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -16,8 +17,12 @@ class MainViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    private func loadBarButtons() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("addButtonTapped"))
+    // MARK: tool bar
+
+    private func loadToolBarButtons() {
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("addButtonTapped"))
+        toolbarItems = [spacer, addButton]
     }
 
     func addButtonTapped() {
