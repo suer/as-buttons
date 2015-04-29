@@ -19,4 +19,19 @@ class Button: NSManagedObject {
         self.MR_deleteEntity()
         Button.save()
     }
+
+    class func move(fromIndex: Int, toIndex: Int) {
+        let buttons = self.MR_findAllSortedBy("sort", ascending: true) as! [Button]
+        buttons[fromIndex].sort = toIndex
+        if (fromIndex < toIndex) {
+            for var i = fromIndex + 1; i <= toIndex; i++ {
+                buttons[i].sort = Int(buttons[i].sort) - 1
+            }
+        } else {
+            for var i = toIndex; i < fromIndex; i++ {
+                buttons[i].sort = Int(buttons[i].sort) + 1
+            }
+        }
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+    }
 }

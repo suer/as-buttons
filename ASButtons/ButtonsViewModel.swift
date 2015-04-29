@@ -9,4 +9,8 @@ class ButtonsViewModel: NSObject {
         buttons[index].delete()
         buttons.removeAtIndex(index)
     }
+
+    func move(fromIndex: Int, toIndex: Int) {
+        Button.move(fromIndex, toIndex: toIndex)
+    }
 }

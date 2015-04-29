@@ -77,5 +77,8 @@ class MainViewController: UITableViewController {
         }
     }
 
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        buttonsViewModel.move(sourceIndexPath.row, toIndex: destinationIndexPath.row)
+    }
 }
 
