@@ -1,5 +1,6 @@
 import Foundation
 import CoreData
+import MagicalRecord
 
 @objc(Button)
 class Button: NSManagedObject {

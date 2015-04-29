@@ -17,7 +17,7 @@
 		8038AF981AEBEBC300389913 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF961AEBEBC300389913 /* Models.xcdatamodeld */; };
 		8038AF9A1AEBEC3200389913 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF991AEBEC3200389913 /* Button.swift */; };
 		8038AF9F1AEBF06200389913 /* ButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF9E1AEBF06200389913 /* ButtonsViewModel.swift */; };
-		87FF09CABB8D35B27A4F75CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD388D10E1A0ED2116F6EFA /* libPods.a */; };
+		D79460770B965F1688855061 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADFE3833D1968332C7D115F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +33,7 @@
 /* Begin PBXFileReference section */
 		47E5AEE04862AE44A61EA25A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		480FF5E76B0CF32792668BF7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4ADFE3833D1968332C7D115F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8038AF691AEBC3BD00389913 /* ASButtons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASButtons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8038AF6D1AEBC3BD00389913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8038AF6E1AEBC3BD00389913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,9 +47,7 @@
 		8038AF901AEBEA9F00389913 /* EditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		8038AF971AEBEBC300389913 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		8038AF991AEBEC3200389913 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Models/Button.swift; sourceTree = "<group>"; };
-		8038AF9B1AEBEC5200389913 /* ASButtons-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ASButtons-Bridging-Header.h"; sourceTree = "<group>"; };
 		8038AF9E1AEBF06200389913 /* ButtonsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsViewModel.swift; sourceTree = "<group>"; };
-		ECD388D10E1A0ED2116F6EFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87FF09CABB8D35B27A4F75CE /* libPods.a in Frameworks */,
+				D79460770B965F1688855061 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +101,6 @@
 				8038AF751AEBC3BD00389913 /* Images.xcassets */,
 				8038AF771AEBC3BD00389913 /* LaunchScreen.xib */,
 				8038AF6C1AEBC3BD00389913 /* Supporting Files */,
-				8038AF9B1AEBEC5200389913 /* ASButtons-Bridging-Header.h */,
 			);
 			path = ASButtons;
 			sourceTree = "<group>";
@@ -144,7 +142,7 @@
 		92CF8977C8C1ECE447A8CF42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ECD388D10E1A0ED2116F6EFA /* libPods.a */,
+				4ADFE3833D1968332C7D115F /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,6 +168,7 @@
 				8038AF661AEBC3BD00389913 /* Frameworks */,
 				8038AF671AEBC3BD00389913 /* Resources */,
 				3B54454B0B0647852F8A693A /* Copy Pods Resources */,
+				40AB2B0EC300DA3BD0DD55FC /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,6 +267,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40AB2B0EC300DA3BD0DD55FC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6F52D004541E1F306D2F5A5 /* Check Pods Manifest.lock */ = {
@@ -422,7 +436,7 @@
 				INFOPLIST_FILE = ASButtons/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ASButtons/ASButtons-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -436,7 +450,7 @@
 				INFOPLIST_FILE = ASButtons/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ASButtons/ASButtons-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
