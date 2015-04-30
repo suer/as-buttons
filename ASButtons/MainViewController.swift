@@ -65,9 +65,22 @@ class MainViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let editViewModel = EditViewModel(button: buttonsViewModel.buttons[indexPath.row])
-        let controller = EditViewController(editViewModel: editViewModel)
-        navigationController?.pushViewController(controller, animated: true)
+        let alert = UIAlertController(title: "Menu", message: nil, preferredStyle: .ActionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alert.addAction(cancelAction)
+        let editAction = UIAlertAction(title: "Edit", style: .Default) {
+            _ in
+            let editViewModel = EditViewModel(button: self.buttonsViewModel.buttons[indexPath.row])
+            let controller = EditViewController(editViewModel: editViewModel)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        alert.addAction(editAction)
+        let postAction = UIAlertAction(title: "Post", style: .Default) {
+            _ in
+            return
+        }
+        alert.addAction(postAction)
+        presentViewController(alert, animated: true, completion: nil)
     }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
