@@ -97,9 +97,9 @@ class MainViewController: UITableViewController {
             AsakusaSatellite.client.postMessage(message, roomID: AsakusaSatellite.RoomID, files: []) { r in
                 switch r {
                 case .Success(let postMessage):
-                    println(postMessage)
+                    self.showPostMessageResult(true)
                 case .Failure(let error):
-                    println(error)
+                    self.showPostMessageResult(false, message: error?.description)
                 }
                 return
             }
@@ -118,6 +118,14 @@ class MainViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         buttonsViewModel.move(sourceIndexPath.row, toIndex: destinationIndexPath.row)
+    }
+
+    private func showPostMessageResult(success: Bool, message: String? = nil) {
+        let title = success ? "Post Success" : "Post Failure"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default) { _ in return}
+        alert.addAction(okAction)
+        presentViewController(alert, animated: true, completion: nil)
     }
 }
 
