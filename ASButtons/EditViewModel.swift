@@ -4,8 +4,7 @@ class EditViewModel: NSObject {
     let button: Button
 
     override init() {
-        self.button = Button.MR_createEntity() as! Button
-        self.button.message = ""
+        self.button = Button.newEntity("")
     }
 
     init(button: Button) {

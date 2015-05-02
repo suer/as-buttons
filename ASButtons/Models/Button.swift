@@ -7,7 +7,15 @@ class Button: NSManagedObject {
 
     @NSManaged var message: String
     @NSManaged var sort: NSNumber
-    
+
+    class func newEntity(message: String) -> Button {
+        let maxSort = MR_aggregateOperation("max:", onAttribute: "sort", withPredicate: NSPredicate(value: true)).integerValue
+        let button = MR_createEntity() as! Button
+        button.message = message
+        button.sort = maxSort
+        return button
+    }
+
     class func save() {
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
