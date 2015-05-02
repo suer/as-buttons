@@ -11,7 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MagicalRecord.setupCoreDataStackWithStoreNamed("as-buttons.sqlite3")
         window!.backgroundColor = UIColor.whiteColor()
         window!.makeKeyAndVisible()
-        let navigationController = UINavigationController(rootViewController: MainViewController())
+        let mainViewController = MainViewController()
+        let navigationController = UINavigationController(rootViewController: mainViewController)
         window!.addSubview(navigationController.view)
         window!.rootViewController = navigationController
         return true

@@ -1,4 +1,5 @@
 import UIKit
+import AsakusaSatellite
 
 class MainViewController: UITableViewController {
 
@@ -11,6 +12,7 @@ class MainViewController: UITableViewController {
         self.addObserver(self, forKeyPath: "editing", options: .New, context: nil)
         loadToolBarButtons()
         loadEditButton()
+        loadSigninButton()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -30,6 +32,20 @@ class MainViewController: UITableViewController {
     func addButtonTapped() {
         let controller = EditViewController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+
+    private func loadSigninButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Signin", style: .Plain, target: self, action: Selector("signinButtonTapped"))
+    }
+
+    // MARK: signin button
+
+    func signinButtonTapped() {
+        let twitterAuthViewController = TwitterAuthViewController(rootURL: NSURL(string: Client(apiKey: nil).rootURL)!) {
+            apiKey in
+            UserDefaults.apiKey = apiKey
+        }
+        navigationController?.pushViewController(twitterAuthViewController, animated: true)
     }
 
     // MARK: edit button
