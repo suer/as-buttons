@@ -18,6 +18,8 @@
 		8038AF9A1AEBEC3200389913 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF991AEBEC3200389913 /* Button.swift */; };
 		8038AF9F1AEBF06200389913 /* ButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF9E1AEBF06200389913 /* ButtonsViewModel.swift */; };
 		8069C63E1AF4A31800AFA41E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069C63D1AF4A31800AFA41E /* UserDefaults.swift */; };
+		8069C6401AF4A5D500AFA41E /* preference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8069C63F1AF4A5D500AFA41E /* preference.plist */; };
+		8069C6421AF4A67000AFA41E /* AsakusaSatellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069C6411AF4A67000AFA41E /* AsakusaSatellite.swift */; };
 		D79460770B965F1688855061 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADFE3833D1968332C7D115F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		8038AF991AEBEC3200389913 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Models/Button.swift; sourceTree = "<group>"; };
 		8038AF9E1AEBF06200389913 /* ButtonsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsViewModel.swift; sourceTree = "<group>"; };
 		8069C63D1AF4A31800AFA41E /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		8069C63F1AF4A5D500AFA41E /* preference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = preference.plist; sourceTree = "<group>"; };
+		8069C6411AF4A67000AFA41E /* AsakusaSatellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsakusaSatellite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				8038AF771AEBC3BD00389913 /* LaunchScreen.xib */,
 				8038AF6C1AEBC3BD00389913 /* Supporting Files */,
 				8069C63D1AF4A31800AFA41E /* UserDefaults.swift */,
+				8069C63F1AF4A5D500AFA41E /* preference.plist */,
+				8069C6411AF4A67000AFA41E /* AsakusaSatellite.swift */,
 			);
 			path = ASButtons;
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8038AF791AEBC3BD00389913 /* LaunchScreen.xib in Resources */,
+				8069C6401AF4A5D500AFA41E /* preference.plist in Resources */,
 				8038AF761AEBC3BD00389913 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +323,7 @@
 				8069C63E1AF4A31800AFA41E /* UserDefaults.swift in Sources */,
 				8038AF6F1AEBC3BD00389913 /* AppDelegate.swift in Sources */,
 				8038AF981AEBEBC300389913 /* Models.xcdatamodeld in Sources */,
+				8069C6421AF4A67000AFA41E /* AsakusaSatellite.swift in Sources */,
 				8038AF8F1AEBD56800389913 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

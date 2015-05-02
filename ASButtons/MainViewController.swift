@@ -41,7 +41,7 @@ class MainViewController: UITableViewController {
     // MARK: signin button
 
     func signinButtonTapped() {
-        let twitterAuthViewController = TwitterAuthViewController(rootURL: NSURL(string: Client(apiKey: nil).rootURL)!) {
+        let twitterAuthViewController = TwitterAuthViewController(rootURL: NSURL(string: AsakusaSatellite.client.rootURL)!) {
             apiKey in
             UserDefaults.apiKey = apiKey
         }
@@ -93,6 +93,16 @@ class MainViewController: UITableViewController {
         alert.addAction(editAction)
         let postAction = UIAlertAction(title: "Post", style: .Default) {
             _ in
+            let message = self.buttonsViewModel.buttons[indexPath.row].message
+            AsakusaSatellite.client.postMessage(message, roomID: AsakusaSatellite.RoomID, files: []) { r in
+                switch r {
+                case .Success(let postMessage):
+                    println(postMessage)
+                case .Failure(let error):
+                    println(error)
+                }
+                return
+            }
             return
         }
         alert.addAction(postAction)
