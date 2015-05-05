@@ -20,6 +20,7 @@
 		8069C63E1AF4A31800AFA41E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069C63D1AF4A31800AFA41E /* UserDefaults.swift */; };
 		8069C6401AF4A5D500AFA41E /* preference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8069C63F1AF4A5D500AFA41E /* preference.plist */; };
 		8069C6421AF4A67000AFA41E /* AsakusaSatellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069C6411AF4A67000AFA41E /* AsakusaSatellite.swift */; };
+		80765FD61AF8F37A00DFC99C /* appicon-1024-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 80765FD51AF8F37A00DFC99C /* appicon-1024-white.png */; };
 		8076C2B81AF5F5830059712F /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076C2B71AF5F5830059712F /* ColorTheme.swift */; };
 		D79460770B965F1688855061 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADFE3833D1968332C7D115F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		8069C63D1AF4A31800AFA41E /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8069C63F1AF4A5D500AFA41E /* preference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = preference.plist; sourceTree = "<group>"; };
 		8069C6411AF4A67000AFA41E /* AsakusaSatellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsakusaSatellite.swift; sourceTree = "<group>"; };
+		80765FD51AF8F37A00DFC99C /* appicon-1024-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon-1024-white.png"; path = "Images/appicon-1024-white.png"; sourceTree = "<group>"; };
 		8076C2B71AF5F5830059712F /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 		8038AF6B1AEBC3BD00389913 /* ASButtons */ = {
 			isa = PBXGroup;
 			children = (
+				80765FD41AF8F35100DFC99C /* Images */,
 				8038AF921AEBEB3700389913 /* Models */,
 				8038AF6E1AEBC3BD00389913 /* AppDelegate.swift */,
 				8038AF701AEBC3BD00389913 /* MainViewController.swift */,
@@ -149,6 +152,14 @@
 				8038AF991AEBEC3200389913 /* Button.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		80765FD41AF8F35100DFC99C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				80765FD51AF8F37A00DFC99C /* appicon-1024-white.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		92CF8977C8C1ECE447A8CF42 /* Frameworks */ = {
@@ -252,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8038AF791AEBC3BD00389913 /* LaunchScreen.xib in Resources */,
+				80765FD61AF8F37A00DFC99C /* appicon-1024-white.png in Resources */,
 				8069C6401AF4A5D500AFA41E /* preference.plist in Resources */,
 				8038AF761AEBC3BD00389913 /* Images.xcassets in Resources */,
 			);
