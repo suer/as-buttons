@@ -35,7 +35,7 @@ class MainViewController: UITableViewController {
     }
 
     private func loadSigninButton() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Signin", style: .Plain, target: self, action: Selector("signinButtonTapped"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: I18n.signin, style: .Plain, target: self, action: Selector("signinButtonTapped"))
     }
 
     // MARK: signin button
@@ -81,17 +81,17 @@ class MainViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let alert = UIAlertController(title: "Menu", message: nil, preferredStyle: .ActionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let alert = UIAlertController(title: I18n.menu, message: nil, preferredStyle: .ActionSheet)
+        let cancelAction = UIAlertAction(title: I18n.cancel, style: .Cancel, handler: nil)
         alert.addAction(cancelAction)
-        let editAction = UIAlertAction(title: "Edit", style: .Default) {
+        let editAction = UIAlertAction(title: I18n.edit, style: .Default) {
             _ in
             let editViewModel = EditViewModel(button: self.buttonsViewModel.buttons[indexPath.row])
             let controller = EditViewController(editViewModel: editViewModel)
             self.navigationController?.pushViewController(controller, animated: true)
         }
         alert.addAction(editAction)
-        let postAction = UIAlertAction(title: "Post", style: .Default) {
+        let postAction = UIAlertAction(title: I18n.post, style: .Default) {
             _ in
             let message = self.buttonsViewModel.buttons[indexPath.row].message
             AsakusaSatellite.client.postMessage(message, roomID: AsakusaSatellite.RoomID, files: []) { r in

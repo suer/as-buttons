@@ -18,7 +18,7 @@ class EditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Edit"
+        title = I18n.edit
         edgesForExtendedLayout = .None
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.whiteColor()
@@ -29,7 +29,7 @@ class EditViewController: UIViewController {
 
     private func loadTextField() {
         textField.text = editViewModel.message
-        textField.placeholder = "Message"
+        textField.placeholder = I18n.message
         view.addSubview(textField)
         textField.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.autoresizingMask = .FlexibleHeight | .FlexibleWidth
@@ -49,7 +49,7 @@ class EditViewController: UIViewController {
 
     // MARK: save button
     private func loadSaveButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: Selector("saveButtonTapped"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: I18n.save, style: .Plain, target: self, action: Selector("saveButtonTapped"))
     }
 
     func saveButtonTapped() {
@@ -59,7 +59,7 @@ class EditViewController: UIViewController {
 
     // MARK: cancel button
     func loadCancelButton() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: Selector("cancelButtonTapped"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: I18n.cancel, style: .Plain, target: self, action: Selector("cancelButtonTapped"))
     }
 
     func cancelButtonTapped() {

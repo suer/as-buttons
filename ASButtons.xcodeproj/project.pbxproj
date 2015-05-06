@@ -21,6 +21,8 @@
 		8069C6401AF4A5D500AFA41E /* preference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8069C63F1AF4A5D500AFA41E /* preference.plist */; };
 		8069C6421AF4A67000AFA41E /* AsakusaSatellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069C6411AF4A67000AFA41E /* AsakusaSatellite.swift */; };
 		80765FD61AF8F37A00DFC99C /* appicon-1024-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 80765FD51AF8F37A00DFC99C /* appicon-1024-white.png */; };
+		80765FD91AFA653400DFC99C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80765FDB1AFA653400DFC99C /* Localizable.strings */; };
+		80765FDE1AFA656300DFC99C /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80765FDD1AFA656300DFC99C /* I18n.swift */; };
 		8076C2B81AF5F5830059712F /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076C2B71AF5F5830059712F /* ColorTheme.swift */; };
 		D79460770B965F1688855061 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADFE3833D1968332C7D115F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -57,6 +59,9 @@
 		8069C63F1AF4A5D500AFA41E /* preference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = preference.plist; sourceTree = "<group>"; };
 		8069C6411AF4A67000AFA41E /* AsakusaSatellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsakusaSatellite.swift; sourceTree = "<group>"; };
 		80765FD51AF8F37A00DFC99C /* appicon-1024-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon-1024-white.png"; path = "Images/appicon-1024-white.png"; sourceTree = "<group>"; };
+		80765FDA1AFA653400DFC99C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		80765FDC1AFA654400DFC99C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		80765FDD1AFA656300DFC99C /* I18n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
 		8076C2B71AF5F5830059712F /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +121,8 @@
 				8069C63F1AF4A5D500AFA41E /* preference.plist */,
 				8069C6411AF4A67000AFA41E /* AsakusaSatellite.swift */,
 				8076C2B71AF5F5830059712F /* ColorTheme.swift */,
+				80765FDD1AFA656300DFC99C /* I18n.swift */,
+				80765FDB1AFA653400DFC99C /* Localizable.strings */,
 			);
 			path = ASButtons;
 			sourceTree = "<group>";
@@ -245,6 +252,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 8038AF601AEBC3BD00389913;
 			productRefGroup = 8038AF6A1AEBC3BD00389913 /* Products */;
@@ -262,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80765FD91AFA653400DFC99C /* Localizable.strings in Resources */,
 				8038AF791AEBC3BD00389913 /* LaunchScreen.xib in Resources */,
 				80765FD61AF8F37A00DFC99C /* appicon-1024-white.png in Resources */,
 				8069C6401AF4A5D500AFA41E /* preference.plist in Resources */,
@@ -335,6 +344,7 @@
 				8076C2B81AF5F5830059712F /* ColorTheme.swift in Sources */,
 				8038AF9A1AEBEC3200389913 /* Button.swift in Sources */,
 				8038AF9F1AEBF06200389913 /* ButtonsViewModel.swift in Sources */,
+				80765FDE1AFA656300DFC99C /* I18n.swift in Sources */,
 				8038AF711AEBC3BD00389913 /* MainViewController.swift in Sources */,
 				8069C63E1AF4A31800AFA41E /* UserDefaults.swift in Sources */,
 				8038AF6F1AEBC3BD00389913 /* AppDelegate.swift in Sources */,
@@ -369,6 +379,15 @@
 				8038AF781AEBC3BD00389913 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		80765FDB1AFA653400DFC99C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80765FDA1AFA653400DFC99C /* en */,
+				80765FDC1AFA654400DFC99C /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
