@@ -51,7 +51,7 @@ class MainViewController: UITableViewController {
     // MARK: edit button
 
     private func loadEditButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: Selector("editButtonTapped"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: I18n.edit, style: .Plain, target: self, action: Selector("editButtonTapped"))
     }
 
     func editButtonTapped() {
@@ -61,7 +61,7 @@ class MainViewController: UITableViewController {
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         switch keyPath {
         case "editing":
-            navigationItem.rightBarButtonItem?.title = editing ? "Finish" : "Edit"
+            navigationItem.rightBarButtonItem?.title = editing ? I18n.finish : I18n.edit
         default:
             break
         }

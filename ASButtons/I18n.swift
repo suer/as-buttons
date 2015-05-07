@@ -15,6 +15,8 @@ class I18n {
 
     class var save: String { return I18n.translate("Save") }
 
+    class var finish: String { return I18n.translate("Finish") }
+
     class var cancel: String { return I18n.translate("Cancel") }
 
     class var edit: String { return I18n.translate("Edit") }
