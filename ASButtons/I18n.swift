@@ -24,4 +24,6 @@ class I18n {
     class var post: String { return I18n.translate("Post") }
 
     class var message: String { return I18n.translate("Message") }
+
+    class var ok: String { return I18n.translate("OK") }
 }

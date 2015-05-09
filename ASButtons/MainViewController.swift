@@ -123,7 +123,7 @@ class MainViewController: UITableViewController {
     private func showPostMessageResult(success: Bool, message: String? = nil) {
         let title = success ? "Post Success" : "Post Failure"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default) { _ in return}
+        let okAction = UIAlertAction(title: I18n.ok, style: .Default) { _ in return}
         alert.addAction(okAction)
         presentViewController(alert, animated: true, completion: nil)
     }
