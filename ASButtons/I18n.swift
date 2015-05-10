@@ -26,4 +26,8 @@ class I18n {
     class var message: String { return I18n.translate("Message") }
 
     class var ok: String { return I18n.translate("OK") }
+
+    class var postSuccess: String { return I18n.translate("Post Success") }
+
+    class var postFailure: String { return I18n.translate("Post Failure") }
 }

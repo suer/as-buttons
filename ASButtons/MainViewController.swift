@@ -121,7 +121,7 @@ class MainViewController: UITableViewController {
     }
 
     private func showPostMessageResult(success: Bool, message: String? = nil) {
-        let title = success ? "Post Success" : "Post Failure"
+        let title = success ? I18n.postSuccess : I18n.postFailure
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: I18n.ok, style: .Default) { _ in return}
         alert.addAction(okAction)
