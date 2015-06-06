@@ -1,4 +1,6 @@
 import Foundation
+import CoreLocation
+
 class EditViewModel: NSObject {
 
     let button: Button
@@ -25,6 +27,22 @@ class EditViewModel: NSObject {
         }
         set {
             button.message = newValue
+        }
+    }
+
+    var location: CLLocationCoordinate2D {
+        get {
+            return CLLocationCoordinate2D(latitude: button.latitude.doubleValue, longitude: button.longitude.doubleValue)
+        }
+        set {
+            button.latitude = NSDecimalNumber(double: newValue.latitude)
+            button.longitude = NSDecimalNumber(double: newValue.longitude)
+        }
+    }
+
+    var isLocationEmpty: Bool {
+        get {
+            return button.longitude == 0.0
         }
     }
 }

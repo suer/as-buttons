@@ -1,7 +1,14 @@
 import UIKit
-class EditViewController: UIViewController {
-    let textField = UITextField()
-    let editViewModel: EditViewModel
+import CoreLocation
+import MapKit
+
+class EditViewController: UIViewController, CLLocationManagerDelegate {
+    private let textField = UITextField()
+    private var mapView: MKMapView!
+    private var pin: MKPointAnnotation!
+    private var locationManager: CLLocationManager!
+    private let editViewModel: EditViewModel
+    private var tapGesture: UITapGestureRecognizer!
 
     convenience init() {
         self.init(editViewModel: EditViewModel())
@@ -23,6 +30,7 @@ class EditViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.whiteColor()
         loadTextField()
+        loadMapView()
         loadSaveButton()
         loadCancelButton()
     }
@@ -47,6 +55,88 @@ class EditViewController: UIViewController {
         editViewModel.message = textField.text
     }
 
+    // MARK: map view
+
+    private func loadMapView() {
+        mapView = MKMapView()
+        view.addSubview(mapView)
+        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.addConstraints([
+            NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: textField, attribute: .Bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: textField, attribute: .Bottom, multiplier: 1.0, constant: view.bounds.width),
+            NSLayoutConstraint(item: mapView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: mapView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0)
+            ])
+
+        tapGesture = UITapGestureRecognizer(target: self, action: Selector("mapTapped"))
+        mapView.addGestureRecognizer(tapGesture)
+
+        if !editViewModel.isLocationEmpty {
+            setLocation(editViewModel.location)
+        }
+
+        let currentLocationButton = UIButton()
+        currentLocationButton.setTitle("Current Location", forState: .Normal)
+        currentLocationButton.setTitleColor(ColorTheme.asakusaSatellite, forState: .Normal)
+        view.addSubview(currentLocationButton)
+        currentLocationButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.addConstraints([
+            NSLayoutConstraint(item: currentLocationButton, attribute: .Top, relatedBy: .Equal, toItem: mapView, attribute: .Bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: currentLocationButton, attribute: .Bottom, relatedBy: .Equal, toItem: mapView, attribute: .Bottom, multiplier: 1.0, constant: 50.0),
+            NSLayoutConstraint(item: currentLocationButton, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: currentLocationButton, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0)
+            ])
+        currentLocationButton.addTarget(self, action: Selector("currentLocationButtonTapped"), forControlEvents: .TouchUpInside)
+    }
+
+    func mapTapped() {
+        let point = tapGesture.locationInView(mapView)
+        let coordinate = mapView.convertPoint(point, toCoordinateFromView: mapView)
+        setLocation(coordinate)
+    }
+
+    func currentLocationButtonTapped() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        let status = CLLocationManager.authorizationStatus()
+        if(status == CLAuthorizationStatus.NotDetermined) {
+            locationManager.requestAlwaysAuthorization()
+        }
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 100
+
+        locationManager.startUpdatingLocation()
+    }
+
+    private func setLocation(coordinate: CLLocationCoordinate2D) {
+        mapView.setCenterCoordinate(coordinate, animated: true)
+        var region = mapView.region
+        region.center = coordinate
+        region.span.latitudeDelta = 0.01
+        region.span.longitudeDelta = 0.01
+        mapView.setRegion(region, animated: true)
+
+        mapView.removeAnnotation(pin)
+        pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        mapView.addAnnotation(pin)
+
+        editViewModel.location = coordinate
+    }
+
+    private func setupLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        let status = CLLocationManager.authorizationStatus()
+        if(status == CLAuthorizationStatus.NotDetermined) {
+            locationManager.requestAlwaysAuthorization()
+        }
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 100
+
+        locationManager.startUpdatingLocation()
+    }
+
     // MARK: save button
     private func loadSaveButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: I18n.save, style: .Plain, target: self, action: Selector("saveButtonTapped"))
@@ -65,5 +155,12 @@ class EditViewController: UIViewController {
     func cancelButtonTapped() {
         editViewModel.rollback()
         navigationController?.popViewControllerAnimated(true)
+    }
+
+    // MARK: CLLocationManagerDelegate
+
+    func locationManager(manager: CLLocationManager!,didUpdateLocations locations: [AnyObject]!){
+        setLocation(manager.location.coordinate)
+        locationManager.stopUpdatingLocation()
     }
 }

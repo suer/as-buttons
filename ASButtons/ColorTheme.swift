@@ -1,7 +1,7 @@
 import UIKit
 
 class ColorTheme {
-    private class var asakusaSatellite: UIColor { return RGB(200, 2, 2) }
+    class var asakusaSatellite: UIColor { return RGB(200, 2, 2) }
     private class var white: UIColor { return RGB(255, 255, 255) }
     class func setupStyle() {
         UINavigationBar.appearance().barTintColor = asakusaSatellite

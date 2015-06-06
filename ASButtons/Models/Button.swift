@@ -7,6 +7,8 @@ class Button: NSManagedObject {
 
     @NSManaged var message: String
     @NSManaged var sort: NSNumber
+    @NSManaged var latitude: NSDecimalNumber
+    @NSManaged var longitude: NSDecimalNumber
 
     class func newEntity(message: String) -> Button {
         let maxSort = MR_aggregateOperation("max:", onAttribute: "sort", withPredicate: NSPredicate(value: true)).integerValue
@@ -43,4 +45,5 @@ class Button: NSManagedObject {
         }
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
+    
 }

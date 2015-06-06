@@ -15,7 +15,6 @@
 		8038AF8F1AEBD56800389913 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF8E1AEBD56800389913 /* EditViewController.swift */; };
 		8038AF911AEBEA9F00389913 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF901AEBEA9F00389913 /* EditViewModel.swift */; };
 		8038AF981AEBEBC300389913 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF961AEBEBC300389913 /* Models.xcdatamodeld */; };
-		8038AF9A1AEBEC3200389913 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF991AEBEC3200389913 /* Button.swift */; };
 		8038AF9F1AEBF06200389913 /* ButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF9E1AEBF06200389913 /* ButtonsViewModel.swift */; };
 		8069C63E1AF4A31800AFA41E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069C63D1AF4A31800AFA41E /* UserDefaults.swift */; };
 		8069C6401AF4A5D500AFA41E /* preference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8069C63F1AF4A5D500AFA41E /* preference.plist */; };
@@ -24,6 +23,8 @@
 		80765FD91AFA653400DFC99C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80765FDB1AFA653400DFC99C /* Localizable.strings */; };
 		80765FDE1AFA656300DFC99C /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80765FDD1AFA656300DFC99C /* I18n.swift */; };
 		8076C2B81AF5F5830059712F /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076C2B71AF5F5830059712F /* ColorTheme.swift */; };
+		80A967711B23456400D94823 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A967701B23456400D94823 /* Button.swift */; };
+		80A967731B23459100D94823 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A967721B23459100D94823 /* CoreLocation.framework */; };
 		D79460770B965F1688855061 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADFE3833D1968332C7D115F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -53,7 +54,6 @@
 		8038AF8E1AEBD56800389913 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		8038AF901AEBEA9F00389913 /* EditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		8038AF971AEBEBC300389913 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
-		8038AF991AEBEC3200389913 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Models/Button.swift; sourceTree = "<group>"; };
 		8038AF9E1AEBF06200389913 /* ButtonsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsViewModel.swift; sourceTree = "<group>"; };
 		8069C63D1AF4A31800AFA41E /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8069C63F1AF4A5D500AFA41E /* preference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = preference.plist; sourceTree = "<group>"; };
@@ -63,6 +63,8 @@
 		80765FDC1AFA654400DFC99C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80765FDD1AFA656300DFC99C /* I18n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
 		8076C2B71AF5F5830059712F /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		80A967701B23456400D94823 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Models/Button.swift; sourceTree = "<group>"; };
+		80A967721B23459100D94823 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A967731B23459100D94823 /* CoreLocation.framework in Frameworks */,
 				D79460770B965F1688855061 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				8038AF961AEBEBC300389913 /* Models.xcdatamodeld */,
-				8038AF991AEBEC3200389913 /* Button.swift */,
+				80A967701B23456400D94823 /* Button.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 		92CF8977C8C1ECE447A8CF42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				80A967721B23459100D94823 /* CoreLocation.framework */,
 				4ADFE3833D1968332C7D115F /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -342,7 +346,6 @@
 			files = (
 				8038AF911AEBEA9F00389913 /* EditViewModel.swift in Sources */,
 				8076C2B81AF5F5830059712F /* ColorTheme.swift in Sources */,
-				8038AF9A1AEBEC3200389913 /* Button.swift in Sources */,
 				8038AF9F1AEBF06200389913 /* ButtonsViewModel.swift in Sources */,
 				80765FDE1AFA656300DFC99C /* I18n.swift in Sources */,
 				8038AF711AEBC3BD00389913 /* MainViewController.swift in Sources */,
@@ -351,6 +354,7 @@
 				8038AF981AEBEBC300389913 /* Models.xcdatamodeld in Sources */,
 				8069C6421AF4A67000AFA41E /* AsakusaSatellite.swift in Sources */,
 				8038AF8F1AEBD56800389913 /* EditViewController.swift in Sources */,
+				80A967711B23456400D94823 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
