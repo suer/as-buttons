@@ -144,6 +144,9 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
 
     func saveButtonTapped() {
         editViewModel.save()
+        let region = CLCircularRegion(center: editViewModel.location, radius: 50, identifier: editViewModel.button.message)
+        setupLocationManager()
+        locationManager.startMonitoringForRegion(region)
         navigationController?.popViewControllerAnimated(true)
     }
 
