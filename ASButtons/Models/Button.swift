@@ -11,8 +11,14 @@ class Button: NSManagedObject {
     @NSManaged var longitude: NSDecimalNumber
 
     class func newEntity(message: String) -> Button {
-        let maxSort = MR_aggregateOperation("max:", onAttribute: "sort", withPredicate: NSPredicate(value: true)).integerValue
-        let button = MR_createEntity() as! Button
+        guard let button = MR_createEntity() as Button? else {
+            return Button()
+        }
+
+        guard let maxSort = MR_aggregateOperation("max:", onAttribute: "sort", withPredicate: NSPredicate(value: true))?.integerValue else {
+            return button
+        }
+
         button.message = message
         button.sort = maxSort
         return button

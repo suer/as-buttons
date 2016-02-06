@@ -58,8 +58,12 @@ class MainViewController: UITableViewController {
         editing = !editing
     }
 
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        switch keyPath {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        guard let path = keyPath else {
+            return
+        }
+
+        switch path {
         case "editing":
             navigationItem.rightBarButtonItem?.title = editing ? I18n.finish : I18n.edit
         default:
@@ -96,7 +100,7 @@ class MainViewController: UITableViewController {
             let message = self.buttonsViewModel.buttons[indexPath.row].message
             AsakusaSatellite.client.postMessage(message, roomID: AsakusaSatellite.RoomID, files: []) { r in
                 switch r {
-                case .Success(let postMessage):
+                case .Success(_):
                     self.showPostMessageResult(true)
                 case .Failure(let error):
                     self.showPostMessageResult(false, message: error?.description)

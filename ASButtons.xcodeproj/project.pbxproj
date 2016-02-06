@@ -25,7 +25,7 @@
 		8076C2B81AF5F5830059712F /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076C2B71AF5F5830059712F /* ColorTheme.swift */; };
 		80A967711B23456400D94823 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A967701B23456400D94823 /* Button.swift */; };
 		80A967731B23459100D94823 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A967721B23459100D94823 /* CoreLocation.framework */; };
-		D79460770B965F1688855061 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADFE3833D1968332C7D115F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D79460770B965F1688855061 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADFE3833D1968332C7D115F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,7 +237,9 @@
 		8038AF611AEBC3BD00389913 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = codefirst.org;
 				TargetAttributes = {
 					8038AF681AEBC3BD00389913 = {
@@ -423,6 +425,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -491,6 +494,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ASButtons/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.codefirst.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -505,6 +509,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ASButtons/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.codefirst.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
@@ -524,6 +529,7 @@
 				);
 				INFOPLIST_FILE = ASButtonsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.codefirst.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASButtons.app/ASButtons";
 			};
@@ -539,6 +545,7 @@
 				);
 				INFOPLIST_FILE = ASButtonsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.codefirst.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASButtons.app/ASButtons";
 			};

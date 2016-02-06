@@ -19,7 +19,7 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -39,8 +39,8 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
         textField.text = editViewModel.message
         textField.placeholder = I18n.message
         view.addSubview(textField)
-        textField.setTranslatesAutoresizingMaskIntoConstraints(false)
-        view.autoresizingMask = .FlexibleHeight | .FlexibleWidth
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        view.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         view.addConstraints([
             NSLayoutConstraint(item: textField, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 20.0),
             NSLayoutConstraint(item: textField, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: -20.0),
@@ -52,7 +52,7 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func messageChanged() {
-        editViewModel.message = textField.text
+        editViewModel.message = textField.text ?? ""
     }
 
     // MARK: map view
@@ -60,7 +60,7 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
     private func loadMapView() {
         mapView = MKMapView()
         view.addSubview(mapView)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addConstraints([
             NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: textField, attribute: .Bottom, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: textField, attribute: .Bottom, multiplier: 1.0, constant: view.bounds.width),
@@ -79,7 +79,7 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
         currentLocationButton.setTitle("Current Location", forState: .Normal)
         currentLocationButton.setTitleColor(ColorTheme.asakusaSatellite, forState: .Normal)
         view.addSubview(currentLocationButton)
-        currentLocationButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        currentLocationButton.translatesAutoresizingMaskIntoConstraints = false
         view.addConstraints([
             NSLayoutConstraint(item: currentLocationButton, attribute: .Top, relatedBy: .Equal, toItem: mapView, attribute: .Bottom, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: currentLocationButton, attribute: .Bottom, relatedBy: .Equal, toItem: mapView, attribute: .Bottom, multiplier: 1.0, constant: 50.0),
@@ -162,8 +162,11 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
 
     // MARK: CLLocationManagerDelegate
 
-    func locationManager(manager: CLLocationManager!,didUpdateLocations locations: [AnyObject]!){
-        setLocation(manager.location.coordinate)
+    func locationManager(manager: CLLocationManager,didUpdateLocations locations: [CLLocation]){
+        guard let location = manager.location else {
+            return
+        }
+        setLocation(location.coordinate)
         locationManager.stopUpdatingLocation()
     }
 }
