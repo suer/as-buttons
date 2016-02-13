@@ -1,14 +1,8 @@
 import UIKit
-import CoreLocation
-import MapKit
+import Eureka
 
-class EditViewController: UIViewController, CLLocationManagerDelegate {
-    private let textField = UITextField()
-    private var mapView: MKMapView!
-    private var pin: MKPointAnnotation!
-    private var locationManager: CLLocationManager!
+class EditViewController: FormViewController {
     private let editViewModel: EditViewModel
-    private var tapGesture: UITapGestureRecognizer!
 
     convenience init() {
         self.init(editViewModel: EditViewModel())
@@ -29,112 +23,23 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
         edgesForExtendedLayout = .None
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.whiteColor()
-        loadTextField()
-        loadMapView()
+        loadForm()
         loadSaveButton()
         loadCancelButton()
     }
-
-    private func loadTextField() {
-        textField.text = editViewModel.message
-        textField.placeholder = I18n.message
-        view.addSubview(textField)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        view.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
-        view.addConstraints([
-            NSLayoutConstraint(item: textField, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 20.0),
-            NSLayoutConstraint(item: textField, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: -20.0),
-            NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: textField, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 50.0)
-            ])
-
-        textField.addTarget(self, action: Selector("messageChanged"), forControlEvents: .EditingChanged)
-    }
-
-    func messageChanged() {
-        editViewModel.message = textField.text ?? ""
-    }
-
-    // MARK: map view
-
-    private func loadMapView() {
-        mapView = MKMapView()
-        view.addSubview(mapView)
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraints([
-            NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: textField, attribute: .Bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: textField, attribute: .Bottom, multiplier: 1.0, constant: view.bounds.width),
-            NSLayoutConstraint(item: mapView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: mapView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0)
-            ])
-
-        tapGesture = UITapGestureRecognizer(target: self, action: Selector("mapTapped"))
-        mapView.addGestureRecognizer(tapGesture)
-
-        if !editViewModel.isLocationEmpty {
-            setLocation(editViewModel.location)
-        }
-
-        let currentLocationButton = UIButton()
-        currentLocationButton.setTitle("Current Location", forState: .Normal)
-        currentLocationButton.setTitleColor(ColorTheme.asakusaSatellite, forState: .Normal)
-        view.addSubview(currentLocationButton)
-        currentLocationButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraints([
-            NSLayoutConstraint(item: currentLocationButton, attribute: .Top, relatedBy: .Equal, toItem: mapView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: currentLocationButton, attribute: .Bottom, relatedBy: .Equal, toItem: mapView, attribute: .Bottom, multiplier: 1.0, constant: 50.0),
-            NSLayoutConstraint(item: currentLocationButton, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: currentLocationButton, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0)
-            ])
-        currentLocationButton.addTarget(self, action: Selector("currentLocationButtonTapped"), forControlEvents: .TouchUpInside)
-    }
-
-    func mapTapped() {
-        let point = tapGesture.locationInView(mapView)
-        let coordinate = mapView.convertPoint(point, toCoordinateFromView: mapView)
-        setLocation(coordinate)
-    }
-
-    func currentLocationButtonTapped() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        let status = CLLocationManager.authorizationStatus()
-        if(status == CLAuthorizationStatus.NotDetermined) {
-            locationManager.requestAlwaysAuthorization()
-        }
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
-
-        locationManager.startUpdatingLocation()
-    }
-
-    private func setLocation(coordinate: CLLocationCoordinate2D) {
-        mapView.setCenterCoordinate(coordinate, animated: true)
-        var region = mapView.region
-        region.center = coordinate
-        region.span.latitudeDelta = 0.01
-        region.span.longitudeDelta = 0.01
-        mapView.setRegion(region, animated: true)
-
-        mapView.removeAnnotation(pin)
-        pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        mapView.addAnnotation(pin)
-
-        editViewModel.location = coordinate
-    }
-
-    private func setupLocationManager() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        let status = CLLocationManager.authorizationStatus()
-        if(status == CLAuthorizationStatus.NotDetermined) {
-            locationManager.requestAlwaysAuthorization()
-        }
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
-
-        locationManager.startUpdatingLocation()
+    
+    // MARK: form
+    
+    private func loadForm() {
+        form +++ Section()
+            <<< TextRow("message") {
+                $0.title = "Message"
+                $0.placeholder = "Hello"
+                $0.value = editViewModel.message
+            }
+            <<< LocationRow("location") {
+                $0.title = "Location"
+            }
     }
 
     // MARK: save button
@@ -144,9 +49,6 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
 
     func saveButtonTapped() {
         editViewModel.save()
-        let region = CLCircularRegion(center: editViewModel.location, radius: 50, identifier: editViewModel.button.message)
-        setupLocationManager()
-        locationManager.startMonitoringForRegion(region)
         navigationController?.popViewControllerAnimated(true)
     }
 
@@ -158,15 +60,5 @@ class EditViewController: UIViewController, CLLocationManagerDelegate {
     func cancelButtonTapped() {
         editViewModel.rollback()
         navigationController?.popViewControllerAnimated(true)
-    }
-
-    // MARK: CLLocationManagerDelegate
-
-    func locationManager(manager: CLLocationManager,didUpdateLocations locations: [CLLocation]){
-        guard let location = manager.location else {
-            return
-        }
-        setLocation(location.coordinate)
-        locationManager.stopUpdatingLocation()
     }
 }

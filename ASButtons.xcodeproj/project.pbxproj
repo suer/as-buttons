@@ -23,6 +23,8 @@
 		80765FD91AFA653400DFC99C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80765FDB1AFA653400DFC99C /* Localizable.strings */; };
 		80765FDE1AFA656300DFC99C /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80765FDD1AFA656300DFC99C /* I18n.swift */; };
 		8076C2B81AF5F5830059712F /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076C2B71AF5F5830059712F /* ColorTheme.swift */; };
+		807FE0FD1C67661100E80A74 /* LocationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807FE0FC1C67661100E80A74 /* LocationRow.swift */; };
+		807FE1001C68C8B700E80A74 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807FE0FF1C68C8B700E80A74 /* MapViewController.swift */; };
 		80A967711B23456400D94823 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A967701B23456400D94823 /* Button.swift */; };
 		80A967731B23459100D94823 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A967721B23459100D94823 /* CoreLocation.framework */; };
 		D79460770B965F1688855061 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADFE3833D1968332C7D115F /* Pods.framework */; };
@@ -63,6 +65,8 @@
 		80765FDC1AFA654400DFC99C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80765FDD1AFA656300DFC99C /* I18n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
 		8076C2B71AF5F5830059712F /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		807FE0FC1C67661100E80A74 /* LocationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRow.swift; sourceTree = "<group>"; };
+		807FE0FF1C68C8B700E80A74 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		80A967701B23456400D94823 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Models/Button.swift; sourceTree = "<group>"; };
 		80A967721B23459100D94823 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -126,6 +130,8 @@
 				8076C2B71AF5F5830059712F /* ColorTheme.swift */,
 				80765FDD1AFA656300DFC99C /* I18n.swift */,
 				80765FDB1AFA653400DFC99C /* Localizable.strings */,
+				807FE0FC1C67661100E80A74 /* LocationRow.swift */,
+				807FE0FF1C68C8B700E80A74 /* MapViewController.swift */,
 			);
 			path = ASButtons;
 			sourceTree = "<group>";
@@ -356,6 +362,8 @@
 				8038AF9F1AEBF06200389913 /* ButtonsViewModel.swift in Sources */,
 				80765FDE1AFA656300DFC99C /* I18n.swift in Sources */,
 				8038AF711AEBC3BD00389913 /* MainViewController.swift in Sources */,
+				807FE0FD1C67661100E80A74 /* LocationRow.swift in Sources */,
+				807FE1001C68C8B700E80A74 /* MapViewController.swift in Sources */,
 				8069C63E1AF4A31800AFA41E /* UserDefaults.swift in Sources */,
 				8038AF6F1AEBC3BD00389913 /* AppDelegate.swift in Sources */,
 				8038AF981AEBEBC300389913 /* Models.xcdatamodeld in Sources */,
