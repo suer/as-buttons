@@ -2,7 +2,7 @@ import UIKit
 import Eureka
 import MapKit
 
-public class MapViewController : UIViewController, TypedRowControllerType, MKMapViewDelegate, UISearchBarDelegate {
+public class MapViewController : UIViewController, TypedRowControllerType, MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
     
     public var row: RowOf<CLLocation>!
     public var completionCallback : ((UIViewController) -> ())?
@@ -35,6 +35,11 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
         v.placeholder = "Input keyword"
         return v
     }()
+
+    lazy var tapGesture: UITapGestureRecognizer = { [unowned self] in
+        let g = UITapGestureRecognizer()
+        return g
+    }()
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -58,6 +63,10 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
 
         mapView.delegate = self
         mapView.addSubview(pinView)
+
+        tapGesture.addTarget(self, action: "mapViewDidTap")
+        tapGesture.delegate = self
+        mapView.addGestureRecognizer(tapGesture)
 
         searchBar.frame = CGRectMake(0, 0, view.bounds.width, 40)
         view.addSubview(searchBar)
@@ -117,6 +126,32 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
             self?.pinView.center = CGPointMake(self!.pinView.center.x, self!.pinView.center.y + 10)
             })
         updateTitle()
+    }
+
+    public func mapViewDidTap() {
+        if tapGesture.state == .Ended {
+            mapView.removeOverlays(mapView.overlays)
+
+            let tapPoint = tapGesture.locationInView(view)
+            let center = mapView.convertPoint(tapPoint, toCoordinateFromView: mapView)
+            let circle = MKCircle(centerCoordinate: center, radius: 50)
+            mapView.addOverlay(circle)
+
+            mapView.removeAnnotations(mapView.annotations)
+
+            let point = MKPointAnnotation()
+            point.coordinate = center
+            mapView.addAnnotation(point)
+            mapView.showAnnotations([point], animated: true)
+        }
+    }
+
+    public func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        let circle = MKCircleRenderer(overlay: overlay)
+        circle.strokeColor = ColorTheme.asakusaSatellite
+        circle.fillColor = ColorTheme.asakusaSatelliteAlpha
+        circle.lineWidth = 1
+        return circle
     }
 
     // MARK: UISearchBarDelegate
