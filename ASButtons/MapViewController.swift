@@ -6,7 +6,8 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
     
     public var row: RowOf<CLLocation>!
     public var completionCallback : ((UIViewController) -> ())?
-    
+    public var location: CLLocationCoordinate2D!
+
     lazy var mapView : MKMapView = { [unowned self] in
         let v = MKMapView(frame: self.view.bounds)
         v.autoresizingMask = UIViewAutoresizing.FlexibleWidth.union(UIViewAutoresizing.FlexibleHeight)
@@ -49,9 +50,11 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
         super.init(nibName: nil, bundle: nil)
     }
     
-    convenience public init(_ callback: (UIViewController) -> ()){
+    convenience public init(location: CLLocation?, _ callback: (UIViewController) -> ()){
         self.init(nibName: nil, bundle: nil)
         completionCallback = callback
+        guard let coordinate = location?.coordinate else { return }
+        self.location = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
     }
     
     public override func viewDidLoad() {
@@ -67,9 +70,12 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
         tapGesture.addTarget(self, action: "mapViewDidTap")
         tapGesture.delegate = self
         mapView.addGestureRecognizer(tapGesture)
-
         searchBar.frame = CGRectMake(0, 0, view.bounds.width, 40)
         view.addSubview(searchBar)
+
+        if let location = self.location {
+            resetAnnotations(location)
+        }
 
         let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "tappedDone:")
         button.title = "Done"
@@ -78,8 +84,7 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
         if let value = row.value {
             let region = MKCoordinateRegionMakeWithDistance(value.coordinate, 400, 400)
             mapView.setRegion(region, animated: true)
-        }
-        else{
+        } else {
             mapView.showsUserLocation = true
         }
         updateTitle()
@@ -95,6 +100,9 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
     
     
     func tappedDone(sender: UIBarButtonItem){
+        if mapView.annotations.isEmpty { return }
+        let coordinate = mapView.annotations[0].coordinate
+        row.value? = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         completionCallback?(self)
     }
     
@@ -130,20 +138,24 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
 
     public func mapViewDidTap() {
         if tapGesture.state == .Ended {
-            mapView.removeOverlays(mapView.overlays)
 
             let tapPoint = tapGesture.locationInView(view)
             let center = mapView.convertPoint(tapPoint, toCoordinateFromView: mapView)
-            let circle = MKCircle(centerCoordinate: center, radius: 50)
-            mapView.addOverlay(circle)
-
-            mapView.removeAnnotations(mapView.annotations)
-
-            let point = MKPointAnnotation()
-            point.coordinate = center
-            mapView.addAnnotation(point)
-            mapView.showAnnotations([point], animated: true)
+            resetAnnotations(center)
         }
+    }
+
+    private func resetAnnotations(location: CLLocationCoordinate2D) {
+        let circle = MKCircle(centerCoordinate: location, radius: 50)
+        mapView.removeOverlays(mapView.overlays)
+        mapView.addOverlay(circle)
+
+        mapView.removeAnnotations(mapView.annotations)
+
+        let point = MKPointAnnotation()
+        point.coordinate = location
+        mapView.addAnnotation(point)
+        mapView.showAnnotations([point], animated: true)
     }
 
     public func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
@@ -169,6 +181,7 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
                 point.subtitle = item.placemark.title
                 self.mapView.addAnnotation(point)
             }
+            self.mapView.removeAnnotations(self.mapView.annotations)
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
         }
     }

@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 import Eureka
 
 class EditViewController: FormViewController {
@@ -36,9 +37,16 @@ class EditViewController: FormViewController {
                 $0.title = "Message"
                 $0.placeholder = "Hello"
                 $0.value = editViewModel.message
+            }.onChange { [weak self] row in
+                guard let value = (row.value as String?) else { return }
+                self?.editViewModel.message = value
             }
             <<< LocationRow("location") {
                 $0.title = "Location"
+                $0.value = CLLocation(latitude: editViewModel.location.latitude, longitude: editViewModel.location.longitude)
+            }.onChange { [weak self] row in
+                guard let location = row.value else { return }
+                self?.editViewModel.location = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             }
     }
 

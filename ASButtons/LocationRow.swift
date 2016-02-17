@@ -4,15 +4,19 @@ import Foundation
 import UIKit
 
 public final class LocationRow : SelectorRow<CLLocation, MapViewController>, RowType {
-    public required init(tag: String?) {
+
+
+    required public init(tag: String?) {
         super.init(tag: tag)
         presentationMode = .Show(controllerProvider: ControllerProvider.Callback {
-                return MapViewController(){ _ in }
+                return MapViewController(location: self.value){ _ in }
             },
             completionCallback: { vc in
                 vc.navigationController?.popViewControllerAnimated(true)
                 guard let mvc = vc as? MapViewController else { return }
-                self.title = self.formatCoordinate(mvc.mapView.centerCoordinate)
+                if mvc.mapView.annotations.isEmpty { return }
+                let annotation = mvc.mapView.annotations[0]
+                self.value = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             }
         )
         displayValueFor = {
