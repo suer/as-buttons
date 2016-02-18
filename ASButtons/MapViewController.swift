@@ -174,6 +174,9 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
         request.region = mapView.region
         let search = MKLocalSearch(request: request)
         search.startWithCompletionHandler { response, error in
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.mapView.removeOverlays(self.mapView.overlays)
+
             for item in response?.mapItems ?? [] {
                 let point = MKPointAnnotation()
                 point.coordinate = item.placemark.coordinate
@@ -181,8 +184,10 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
                 point.subtitle = item.placemark.title
                 self.mapView.addAnnotation(point)
             }
-            self.mapView.removeAnnotations(self.mapView.annotations)
-            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+            if !self.mapView.annotations.isEmpty {
+                self.mapView.setCenterCoordinate(self.mapView.annotations[0].coordinate, animated: true)
+                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+            }
         }
     }
 }
