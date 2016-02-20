@@ -9,6 +9,8 @@ class Button: NSManagedObject {
     @NSManaged var sort: NSNumber
     @NSManaged var latitude: NSDecimalNumber
     @NSManaged var longitude: NSDecimalNumber
+    @NSManaged var radius: NSDecimalNumber
+    @NSManaged var notificationTiming: NSNumber
 
     class func newEntity(message: String) -> Button {
         guard let button = MR_createEntity() as Button? else {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8012E1641C76300D003847AC /* NotificationTiming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012E1631C76300D003847AC /* NotificationTiming.swift */; };
+		8012E1661C76CC76003847AC /* ChoiceListPopoverSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012E1651C76CC76003847AC /* ChoiceListPopoverSelectorRow.swift */; };
+		8012E1681C7738F9003847AC /* ChoicelistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012E1671C7738F9003847AC /* ChoicelistViewController.swift */; };
+		8012E16A1C7762B5003847AC /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012E1691C7762B5003847AC /* Choice.swift */; };
 		8038AF6F1AEBC3BD00389913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF6E1AEBC3BD00389913 /* AppDelegate.swift */; };
 		8038AF711AEBC3BD00389913 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038AF701AEBC3BD00389913 /* MainViewController.swift */; };
 		8038AF761AEBC3BD00389913 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8038AF751AEBC3BD00389913 /* Images.xcassets */; };
@@ -44,6 +48,10 @@
 		47E5AEE04862AE44A61EA25A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		480FF5E76B0CF32792668BF7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4ADFE3833D1968332C7D115F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8012E1631C76300D003847AC /* NotificationTiming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTiming.swift; sourceTree = "<group>"; };
+		8012E1651C76CC76003847AC /* ChoiceListPopoverSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceListPopoverSelectorRow.swift; sourceTree = "<group>"; };
+		8012E1671C7738F9003847AC /* ChoicelistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicelistViewController.swift; sourceTree = "<group>"; };
+		8012E1691C7762B5003847AC /* Choice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
 		8038AF691AEBC3BD00389913 /* ASButtons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASButtons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8038AF6D1AEBC3BD00389913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8038AF6E1AEBC3BD00389913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +140,10 @@
 				80765FDB1AFA653400DFC99C /* Localizable.strings */,
 				807FE0FC1C67661100E80A74 /* LocationRow.swift */,
 				807FE0FF1C68C8B700E80A74 /* MapViewController.swift */,
+				8012E1631C76300D003847AC /* NotificationTiming.swift */,
+				8012E1651C76CC76003847AC /* ChoiceListPopoverSelectorRow.swift */,
+				8012E1671C7738F9003847AC /* ChoicelistViewController.swift */,
+				8012E1691C7762B5003847AC /* Choice.swift */,
 			);
 			path = ASButtons;
 			sourceTree = "<group>";
@@ -361,15 +373,19 @@
 				8076C2B81AF5F5830059712F /* ColorTheme.swift in Sources */,
 				8038AF9F1AEBF06200389913 /* ButtonsViewModel.swift in Sources */,
 				80765FDE1AFA656300DFC99C /* I18n.swift in Sources */,
+				8012E1661C76CC76003847AC /* ChoiceListPopoverSelectorRow.swift in Sources */,
 				8038AF711AEBC3BD00389913 /* MainViewController.swift in Sources */,
 				807FE0FD1C67661100E80A74 /* LocationRow.swift in Sources */,
 				807FE1001C68C8B700E80A74 /* MapViewController.swift in Sources */,
 				8069C63E1AF4A31800AFA41E /* UserDefaults.swift in Sources */,
 				8038AF6F1AEBC3BD00389913 /* AppDelegate.swift in Sources */,
 				8038AF981AEBEBC300389913 /* Models.xcdatamodeld in Sources */,
+				8012E1641C76300D003847AC /* NotificationTiming.swift in Sources */,
+				8012E16A1C7762B5003847AC /* Choice.swift in Sources */,
 				8069C6421AF4A67000AFA41E /* AsakusaSatellite.swift in Sources */,
 				8038AF8F1AEBD56800389913 /* EditViewController.swift in Sources */,
 				80A967711B23456400D94823 /* Button.swift in Sources */,
+				8012E1681C7738F9003847AC /* ChoicelistViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

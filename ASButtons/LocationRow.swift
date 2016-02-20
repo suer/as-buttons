@@ -5,7 +5,6 @@ import UIKit
 
 public final class LocationRow : SelectorRow<CLLocation, MapViewController>, RowType {
 
-
     required public init(tag: String?) {
         super.init(tag: tag)
         presentationMode = .Show(controllerProvider: ControllerProvider.Callback {

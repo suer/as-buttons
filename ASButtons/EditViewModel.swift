@@ -45,4 +45,13 @@ class EditViewModel: NSObject {
             return button.longitude == 0.0
         }
     }
+
+    var notificationTiming: NotificationTiming {
+        get {
+            return NotificationTiming.fromInt(button.notificationTiming.integerValue)
+        }
+        set {
+            button.notificationTiming = newValue.rawValue
+        }
+    }
 }

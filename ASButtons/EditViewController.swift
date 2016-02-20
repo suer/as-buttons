@@ -48,6 +48,15 @@ class EditViewController: FormViewController {
                 guard let location = row.value else { return }
                 self?.editViewModel.location = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             }
+            <<< ChoiceListPopoverSelectorRow<NotificationTiming>("notification timing") {
+                $0.title = "Timing of notification"
+                $0.selectorTitle = "Timing of notification"
+                $0.options = [.OnEnter, .OnExit]
+                $0.value = editViewModel.notificationTiming
+            }.onChange { [weak self] row in
+                guard let notificationTiming = (row.value as NotificationTiming?) else { return }
+                self?.editViewModel.notificationTiming = NotificationTiming.fromInt(notificationTiming.value)
+            }
     }
 
     // MARK: save button
