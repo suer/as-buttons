@@ -43,7 +43,9 @@ class EditViewController: FormViewController {
             }
             <<< LocationRow("location") {
                 $0.title = "Location"
-                $0.value = CLLocation(latitude: editViewModel.location.latitude, longitude: editViewModel.location.longitude)
+                if let location = editViewModel.location {
+                    $0.value = CLLocation(latitude: location.latitude, longitude: location.longitude)
+                }
             }.onChange { [weak self] row in
                 guard let location = row.value else { return }
                 self?.editViewModel.location = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)

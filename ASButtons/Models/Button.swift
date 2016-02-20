@@ -5,17 +5,25 @@ import MagicalRecord
 @objc(Button)
 class Button: NSManagedObject {
 
+    @NSManaged var uuid: String
     @NSManaged var message: String
     @NSManaged var sort: NSNumber
+    @NSManaged var notificationEnabled: Bool
     @NSManaged var latitude: NSDecimalNumber
     @NSManaged var longitude: NSDecimalNumber
     @NSManaged var radius: NSDecimalNumber
     @NSManaged var notificationTiming: NSNumber
 
     class func newEntity(message: String) -> Button {
+        let uuid = NSUUID().UUIDString
+
         guard let button = MR_createEntity() as Button? else {
-            return Button()
+            let b = Button()
+            b.uuid = uuid
+            return b
         }
+
+        button.uuid = uuid
 
         guard let maxSort = MR_aggregateOperation("max:", onAttribute: "sort", withPredicate: NSPredicate(value: true))?.integerValue else {
             return button
@@ -24,6 +32,14 @@ class Button: NSManagedObject {
         button.message = message
         button.sort = maxSort
         return button
+    }
+
+    class func findByUUID(uuid: String) -> Button? {
+        guard let buttons = Button.MR_findByAttribute("uuid", withValue: uuid) as? [Button] else { return nil }
+        if buttons.isEmpty {
+            return nil
+        }
+        return buttons[0]
     }
 
     class func save() {

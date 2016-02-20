@@ -1,5 +1,6 @@
 import UIKit
 import MagicalRecord
+import AsakusaSatellite
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         MagicalRecord.cleanUp()
+    }
+
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+
+        guard let identifier = identifier else {
+            completionHandler()
+            return
+        }
+
+        guard let button = Button.findByUUID(identifier) else {
+            completionHandler()
+            return
+        }
+
+        guard identifier == "POST" else {
+            completionHandler()
+            return
+        }
+
+        AsakusaSatellite.client.postMessage(button.message, roomID: AsakusaSatellite.RoomID, files: []) { r in
+            completionHandler()
+        }
     }
 }
 

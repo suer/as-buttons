@@ -4,11 +4,13 @@
         <attribute name="latitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="notificationTiming" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="radius" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Button" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="Button" positionX="-54" positionY="-9" width="128" height="165"/>
     </elements>
 </model>
